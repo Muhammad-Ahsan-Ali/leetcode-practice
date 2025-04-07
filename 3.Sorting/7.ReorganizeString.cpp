@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-using namespace std;
+
 bool isUnique(string s)
 {
     for (int i = 0; i < s.length() - 1; i++)
@@ -33,22 +31,20 @@ string permuteHelper(string &s, int index)
 
         string result = permuteHelper(s, index + 1);
 
-        if (result != "")
-        {
-            return result;
-        }
-
         swap(s[i], s[index]);
     }
 
     return "";
 }
 
+// optimized
+
 string reorganizeString(string s)
 {
     int hash[256] = {0};
     int maxFreq = 0;
     char letter = s[0];
+
     for (int i = 0; i < s.size(); i++)
     {
         hash[s[i] - 'A']++;
@@ -88,19 +84,4 @@ string reorganizeString(string s)
     }
 
     return result;
-    // return permuteHelper(s, 0);
-}
-
-int main()
-{
-
-    string s = "abbabbaaab";
-    string s2 = reorganizeString(s);
-    int len = s2.size();
-    for (int i = 0; i < len; i++)
-    {
-        cout << s2[i];
-    }
-
-    return 0;
 }

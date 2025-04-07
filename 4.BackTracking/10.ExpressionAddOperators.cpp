@@ -1,9 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <map>
-#include <set>
-
-using namespace std;
 
 void sol(int index, string num, int target, string exp, vector<string> &output, long cur, long prev)
 {
@@ -21,7 +15,7 @@ void sol(int index, string num, int target, string exp, vector<string> &output, 
     for (int i = index; i < num.length(); i++)
     {
         // Avoid numbers with leading zeros
-        if (i > index && num[index] == '0')
+        if (i != index && num[index] == '0')
             break;
 
         // Extract the current number from the string as a substring
@@ -52,10 +46,4 @@ vector<string> addOperators(string num, int target)
     vector<string> output;
     sol(0, num, target, "", output, 0, 0);
     return output;
-}
-
-int main()
-{
-
-    return 0;
 }

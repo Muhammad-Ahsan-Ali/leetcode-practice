@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-using namespace std;
-
+ 
 void util(int sum, int index, vector<vector<int>> &combinations, vector<int> temp, vector<int> &candidates, int target)
 {
 
@@ -29,12 +26,4 @@ vector<vector<int>> combinationSum(vector<int> &candidates, int target)
 
     return combinations;
 }
-
-int main()
-{
-    vector<int> candidates = {2, 3, 6, 7};
-    int target = 7;
-    combinationSum(candidates, target);
-
-    return 0;
-}
+ 

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-using namespace std;
-
+ 
 void sortColors(vector<int> &nums)
 {
 
@@ -54,16 +51,4 @@ void sortColors(vector<int> &nums)
         }
     }
 }
-
-int main()
-{
-    vector<int> nums = {1, 2, 0};
-
-    sortColors(nums);
-
-    for (int i = 0; i < nums.size(); i++)
-    {
-        cout << nums[i] << ",";
-    }
-    return 0;
-}
+ 

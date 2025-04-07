@@ -3,7 +3,7 @@ vector<int> smallestRange(vector<vector<int>> &nums)
 {
 
     int len = nums.size();
-  
+
     // Vector to hold (value, index of list) pairs
     vector<pair<int, int>> elements;
 
@@ -26,6 +26,7 @@ vector<int> smallestRange(vector<vector<int>> &nums)
     int track = 0;
     int range = INT_MAX;
     // Keep track of the smallest range
+
     int minRange = 0, maxRange = 0;
     // These will store the minimum and maximum indices for the final range
 

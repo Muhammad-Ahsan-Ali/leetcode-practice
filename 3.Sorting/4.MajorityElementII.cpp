@@ -1,9 +1,4 @@
-#include <iostream>
-#include <cmath>
-#include <vector>
-
-using namespace std;
-
+ 
 vector<int> majorityElement(vector<int> &nums)
 {
 

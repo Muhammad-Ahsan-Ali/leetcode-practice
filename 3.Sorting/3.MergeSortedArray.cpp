@@ -19,9 +19,9 @@ void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     {
         int left = 0;
         int right = left + gap;
+
         while (right < (m + n))
         {
-
             // if in 1st part
 
             if (right < m && left < m)
@@ -41,6 +41,7 @@ void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
             {
                 swapGreater(nums1, nums2, left, right - m);
             }
+
             left++;
             right++;
         }
@@ -54,25 +55,7 @@ void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     }
     nums1.insert(nums1.end(), nums2.begin(), nums2.end());
 }
-
-int main()
-{
-
-    vector<int> num1 = {1, 2, 3};
-    vector<int> num2 = {2, 5, 6};
-    int len1 = num1.size();
-    int len2 = num1.size();
-
-    merge(num1, len1, num2, len2);
-
-    for (int i = 0; i < (len1 + len2); i++)
-    {
-        cout << num1[i];
-    }
-
-    return 0;
-}
-
+ 
 
 // optimized
 
