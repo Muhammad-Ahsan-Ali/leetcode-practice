@@ -23,20 +23,17 @@ public:
 
 // optimized
 
-class Solution
-{
-public:
-    void rotate(vector<int> &nums, int k)
-    {
-
-        if (k % n == 0)
-        {
-            return;
+class Solution {
+    public:
+        void rotate(vector<int>& nums, int k) {
+    
+            int n = nums.size();
+            if (k % n == 0) {
+                return;
+            }
+            k = k % n;
+            reverse(nums.begin(), nums.begin() + (n - k));
+            reverse(nums.begin() + (n - k), nums.end());
+            reverse(nums.begin(), nums.end());
         }
-        k = k % n;
-        int n = nums.size();
-        reverse(nums, nums + (n - k));
-        reverse(nums + (n - k), nums + n);
-        reverse(nums, nums + n);
-    }
-};
+    };

@@ -72,6 +72,7 @@ int trappingRainWater(int array[], int length)
         }
         first_wall[i] = maxTill;
     }
+
     maxTill = 0;
     for (int i = length - 1; i >= 0; i--)
     {
@@ -108,3 +109,47 @@ int main()
 
     return 0;
 }
+
+// optimized
+class Solution
+{
+public:
+    int trap(vector<int> &height)
+    {
+        int l = 0;
+        int total = 0;
+        int r = height.size() - 1;
+        int lMax = 0;
+        int rMax = 0;
+
+        while (l < r)
+        {
+            if (height[l] <= height[r])
+            {
+                if (lMax > height[l])
+                {
+                    total += lMax - height[l];
+                }
+                else
+                {
+                    lMax = height[l];
+                }
+
+                l++;
+            }
+            else
+            {
+                if (rMax > height[r])
+                {
+                    total += rMax - height[r];
+                }
+                else
+                {
+                    rMax = height[r];
+                }
+                r--;
+            }
+        }
+        return total;
+    }
+};

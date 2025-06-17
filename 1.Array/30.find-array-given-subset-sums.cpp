@@ -13,7 +13,12 @@ public:
             unordered_map<int, int> freq;
             vector<int> s1;
             vector<int> s2;
-            int flag = 0;
+            int flag = 0;class Solution {
+                public:
+                    long long minimumReplacement(vector<int>& nums) {
+                        
+                    }
+                };
 
             for (auto &it : sums)
             {

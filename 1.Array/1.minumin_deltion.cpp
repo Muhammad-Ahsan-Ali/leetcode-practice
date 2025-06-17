@@ -83,6 +83,35 @@ int minimumDeletions(int array[], int array_length)
     return minimumDeletions;
 }
 
+class Solution
+{
+public:
+    int minimumDeletions(vector<int> &nums)
+    {
+        int n = nums.size();
+        pair<int, int> high = {INT_MIN, 0};
+        pair<int, int> low = {INT_MAX, 0};
+
+        for (int i = 0; i < n; i++)
+        {
+            if (nums[i] > high.first)
+                high = {nums[i], i};
+            if (nums[i] < low.first)
+                low = {nums[i], i};
+        }
+
+        int highindex = high.second, lowindex = low.second;
+        if (highindex < lowindex)
+            swap(highindex, lowindex);
+
+        int option1 = highindex + 1;
+        int option2 = n - lowindex;
+        int option3 = (lowindex + 1) + (n - highindex);
+
+        return min({option1, option2, option3});
+    }
+};
+
 int main()
 {
 

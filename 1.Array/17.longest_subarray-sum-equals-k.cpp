@@ -1,4 +1,5 @@
 // for positive ,zero and negative numbers
+
 class Solution
 {
 public:
@@ -17,16 +18,20 @@ public:
             {
                 maxLen = max(maxLen, i + 1);
             }
+
             int rem = sum - k;
+
             if (preSumMap.find(rem) != preSumMap.end())
             {
                 int len = i - preSumMap[rem];
                 maxLen = max(maxLen, len);
             }
+
             if (preSumMap.find(sum) == preSumMap.end())
             {
                 preSumMap[sum] = i;
             }
+
         }
         return maxLen;
     }
@@ -45,6 +50,7 @@ public:
         int n = arr.size();
         int sum = arr[0];
         int maxLen = 0;
+    
         while (right < n)
         {
             while (left <= right && sum > k)
@@ -52,16 +58,19 @@ public:
                 sum -= arr[left];
                 left++;
             }
+        
             if (sum == k)
             {
                 maxLen = max(maxLen, right - left + 1);
             }
 
             right++;
+
             if (right < n)
             {
                 sum += arr[right];
             }
+
         }
         return maxLen;
     }

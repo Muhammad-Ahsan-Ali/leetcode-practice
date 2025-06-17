@@ -36,7 +36,7 @@ int findKthLargest(vector<int> &arr, int k)
         int pivot_index = rand() % (high - low + 1) + low;
         int new_pivot = partition(low, high, pivot_index, arr);
 
-        if (new_pivot == (n - k))
+         if (new_pivot == (n - k))
             return arr[new_pivot];
         else if (new_pivot > n - k)
             high = new_pivot - 1;

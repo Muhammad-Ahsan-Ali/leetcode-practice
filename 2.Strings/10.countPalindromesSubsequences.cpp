@@ -106,7 +106,7 @@ public:
         // Reverse two digits, i.e., if x = 12, return 21
         return (x % 10) * 10 + x / 10;
     }
-
+ 
     // Function to count palindromes of length 5
     int countPalindroes(string &str)
     {

@@ -85,7 +85,7 @@ public:
         long long n = rows * cols; // Total numbers expected
 
         // s-sn=x-y
-        // s-sn=x2-y2=(x+y)( x-y)
+        // s-sn=x2-y2=(x+y)(x-y)
 
         long long s = 0, sn = (n * (n + 1)) / 2;
         long long s2 = 0, s2n = (n * (n + 1) * (2 * n + 1)) / 6;

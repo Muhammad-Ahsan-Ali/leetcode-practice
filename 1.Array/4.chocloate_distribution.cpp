@@ -8,7 +8,6 @@ void findMinDiff(int array[], int m, int length)
 
     for (int i = 1; i < length; i++)
     {
-
         for (int j = 0; j < length; j++)
         {
             if (array[i] < array[j])
