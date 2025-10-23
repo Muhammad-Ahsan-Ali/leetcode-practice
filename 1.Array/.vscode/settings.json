@@ -11,6 +11,10 @@
         "format": "cpp",
         "random": "cpp",
         "limits": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "tuple": "cpp",
+        "unordered_map": "cpp",
+        "text_encoding": "cpp",
+        "compare": "cpp"
     }
 }

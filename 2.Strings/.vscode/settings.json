@@ -7,6 +7,17 @@
     "format": "cpp",
     "unordered_map": "cpp",
     "vector": "cpp",
-    "string_view": "cpp"
+    "string_view": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "span": "cpp",
+    "deque": "cpp",
+    "memory": "cpp",
+    "optional": "cpp",
+    "system_error": "cpp",
+    "text_encoding": "cpp",
+    "variant": "cpp",
+    "bitset": "cpp",
+    "regex": "cpp"
   }
 }

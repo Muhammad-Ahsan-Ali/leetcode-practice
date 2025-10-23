@@ -18,9 +18,9 @@ public:
         // If characters don't match, try insert, delete, and replace operations
         else
         {
-            int insertOp = minDistanceHelper(word1, word2, i, j - 1);      // Insert
-            int deleteOp = minDistanceHelper(word1, word2, i - 1, j);      // Delete
             int replaceOp = minDistanceHelper(word1, word2, i - 1, j - 1); // Replace
+            int deleteOp = minDistanceHelper(word1, word2, i - 1, j);      // Delete
+            int insertOp = minDistanceHelper(word1, word2, i, j - 1);      // Insert
             return 1 + min({insertOp, deleteOp, replaceOp});
         }
     }

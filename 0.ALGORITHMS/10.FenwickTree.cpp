@@ -1,20 +1,27 @@
- 
+
 class FT
 {
 private:
     vector<long long> f;
+    int n;
 
 public:
-    // Constructor
-    FT(long long size)
+    FT(const vector<long long> &arr)
     {
-        f.assign(size + 2, 0);
+        n = arr.size();
+        f.assign(n + 1, 0);
+
+        for (int i = 0; i < n; i++)
+        {
+            update(i + 1, arr[i]); // 1-based indexing
+        }
     }
 
     // Point update: add 'add' to index 'i'
     void update(long long i, long long add)
     {
-        while (i < n)
+
+        while (i <= n)
         {
             f[i] += add;
             i = i + (i & (-i));
@@ -37,5 +44,22 @@ public:
     long long rangeSum(long long l, long long r)
     {
         return sum(r) - sum(l - 1);
+    }
+
+    // Binary uplifting finding prefix sum lower bound
+
+    long long find(int val)
+    {
+        int idx = 0, prevSum = 0;
+        for (int i = log2(n); i >= 0; i--)
+        {
+            if (ft[idx + (1 << i)] + prevSum < val)
+            {
+                idx += (1 << i);
+                prevSum += ft[idx + (1 << i)];
+            }
+        }
+
+        return idx + 1;
     }
 };

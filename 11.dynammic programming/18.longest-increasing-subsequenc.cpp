@@ -34,8 +34,11 @@ class Solution
 public:
     int lengthOfLIS(vector<int> &nums)
     {
+
         int n = nums.size();
+
         vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+
         for (int cur = n - 1; cur >= 0; cur--)
         {
             for (int prev = cur - 1; prev >= -1; prev--)
@@ -48,9 +51,22 @@ public:
                 dp[cur][prev + 1] = len;
             }
         }
+
         return dp[0][0];
     }
 };
+
+// 🔎 Explanation of the tricky part:
+
+// dp[cur][prev+1] = LIS length if we are at index cur and last chosen index is prev.
+
+// Why prev+1? Because prev can be -1 (no element chosen yet). Shifting by +1 makes it valid as an array index.
+
+// Transition:
+
+// Skip current element → move to cur+1 without changing prev.
+
+// Take current element → only allowed if nums[prev] < nums[cur] → then 1 + dp[cur+1][cur+1].
 
 ///  ...................
 
@@ -82,66 +98,6 @@ public:
     }
 };
 
-//// uisng single dp for printing
-
-class Solution
-{
-public:
-    int lengthOfLIS(vector<int> &nums)
-    {
-        int n = nums.size();
-        vector<int> dp(n, 1), hash(n); // dp[i]: length of LIS ending at i, hash[i]: backtracking index
-        int lastIndex = 0;             // Index of the last element in the LIS
-        int maxi = 1;                  // Length of the longest LIS
-
-        // Initialize hash to point to itself (each element is its own predecessor initially)
-        for (int i = 0; i < n; i++)
-        {
-            hash[i] = i;
-        }
-
-        // Compute dp array and track predecessors
-        for (int i = 0; i < n; i++)
-        {
-            for (int prev = 0; prev < i; prev++)
-            {
-                if (nums[prev] < nums[i] && 1 + dp[prev] > dp[i])
-                {
-                    dp[i] = 1 + dp[prev];
-                    hash[i] = prev; // Record the previous index
-                }
-            }
-            // Update the maximum LIS length and its last index
-            if (dp[i] > maxi)
-            {
-                maxi = dp[i];
-                lastIndex = i;
-            }
-        }
-
-        // Reconstruct the LIS using the hash array
-        vector<int> temp; // To store the LIS
-        temp.push_back(nums[lastIndex]);
-
-        while (hash[lastIndex] != lastIndex)
-        { // Follow the hash array to backtrack
-            lastIndex = hash[lastIndex];
-            temp.push_back(nums[lastIndex]);
-        }
-
-        reverse(temp.begin(), temp.end()); // Reverse the reconstructed sequence to correct order
-
-        // Optional: Print the LIS for visualization
-        cout << "Longest Increasing Subsequence:";
-        for (int num : temp)
-        {
-            cout << num << " ";
-        }
-        cout << endl;
-
-        return maxi; // Return the length of the LIS
-    }
-};
 
 // greedy and Using lower bound approach
 

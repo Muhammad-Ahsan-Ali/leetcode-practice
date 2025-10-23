@@ -17,7 +17,6 @@ public:
 
     bool solve(string &s, int idx)
     {
-
         if (idx == n)
         {
             return true;
@@ -33,7 +32,6 @@ public:
 
         for (int l = 1; l <= n; l++)
         {
-
             string temp = s.substr(idx, l);
             if (st.find(temp) != st.end() && solve(s, idx + l))
                 return t[idx] = true;
@@ -118,5 +116,50 @@ public:
         }
 
         return dp[n];
+    }
+};
+
+// actual recursion for this
+class Solution
+{
+private:
+    vector<int> dp;
+    bool wordBreakHelper(string &s, vector<string> &wordDict, int n)
+    {
+        // Base case: empty string can always be segmented
+        if (n == 0)
+            return true;
+
+        // If already computed, return the result
+        if (dp[n] != -1)
+            return dp[n];
+
+        // Try every word in the dictionary
+        for (auto &w : wordDict)
+        {
+            int start = n - w.length();
+            if (start >= 0 && s.substr(start, w.length()) == w)
+            {
+                // Recur for the prefix
+                if (wordBreakHelper(s, wordDict, start))
+                {
+                    dp[n] = 1; // Mark this position as true
+                    return true;
+                }
+            }
+        }
+
+        // If no word matches, mark as false
+        dp[n] = 0;
+        return false;
+    }
+
+public:
+    bool wordBreak(string s, vector<string> &wordDict)
+    {
+        int n = s.length();
+        dp.assign(n + 1, -1); // Initialize DP with -1 (uncomputed)
+        dp[0] = 1;            // Base case: empty string
+        return wordBreakHelper(s, wordDict, n);
     }
 };

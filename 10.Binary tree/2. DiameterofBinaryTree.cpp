@@ -1,43 +1,27 @@
-
-
-#include <iostream>
-#include <algorithm>
-using namespace std;
-
-
-
-
-
-
-
-class Solution {
+class Solution
+{
 public:
+    // Helper function to calculate height and update the diameter
+    int helper(TreeNode *root, int &diameter)
+    {
+        if (!root) // Base case: If node is NULL, height is 0
+            return 0;
 
+        // Recursively find the height of the left and right subtrees
+        int lh = helper(root->left, diameter);
+        int rh = helper(root->right, diameter);
 
-int hlprDmtrOfBTree(TreeNode* root ,int & diameter){
+        // Update the maximum diameter found so far
+        diameter = max(diameter, lh + rh);
 
-if(!root) return 0;
+        // Return the height of the current subtree (1 + max(left height, right height))
+        return 1 + max(lh, rh);
+    }
 
-int lh =hlprDmtrOfBTree(  root->left ,diameter);
-int rh =hlprDmtrOfBTree(  root->right ,diameter);
-
-diameter=max(diameter,lh+rh);
-
-return 1+ max(lh,rh);
-}
-
-    int diameterOfBinaryTree(TreeNode* root) {
-
-        int diameter=0;
-        hlprDmtrOfBTree(  root ,diameter);
-
-        return diameter;
+    int diameterOfBinaryTree(TreeNode *root)
+    {
+        int diameter = 0;       // Initialize diameter to 0
+        helper(root, diameter); // Call the helper function to compute the diameter
+        return diameter;        // Return the final diameter
     }
 };
-
-
-
-int main(
-
-    return 0;
-)

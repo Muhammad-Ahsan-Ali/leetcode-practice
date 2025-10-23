@@ -5,6 +5,11 @@
     "format": "cpp",
     "deque": "cpp",
     "vector": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "string_view": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "span": "cpp",
+    "tuple": "cpp"
   }
 }

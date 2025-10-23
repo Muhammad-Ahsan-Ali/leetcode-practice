@@ -6,7 +6,7 @@ public:
         if (amount == 0)
             return 0; // No coins needed
         if (index < 0 || amount < 0)
-            return INT_MAX - 1; // Impossible case
+            return INT_MAX; // Impossible case
 
         // Choice 1: Take the current coin (if possible)
         int take = 1 + coinChangeHelper(coins, index, amount - coins[index]);
@@ -20,7 +20,7 @@ public:
     int coinChange(vector<int> &coins, int amount)
     {
         int res = coinChangeHelper(coins, coins.size() - 1, amount);
-        return (res == INT_MAX - 1) ? -1 : res;
+        return (res == INT_MAX) ? -1 : res;
     }
 };
 
@@ -57,9 +57,7 @@ public:
                 int take = INT_MAX;
 
                 if (coins[ind] <= subTarg && cur[subTarg - coins[ind]] != INT_MAX)
-                {
                     take = 1 + cur[subTarg - coins[ind]];
-                }
 
                 cur[subTarg] = min(noTake, take);
             }
@@ -68,5 +66,39 @@ public:
         }
 
         return prev[amount] == INT_MAX ? -1 : prev[amount];
+    }
+};
+
+/// more intuitive
+
+class Solution
+{
+public:
+    int solve(int ind, int amount, vector<int> &coins)
+    {
+        if (ind == 0)
+        {
+            // Base case: only coin at index 0
+            if (amount % coins[0] == 0)
+                return amount / coins[0];
+            else
+                return 1e9; // A large number to represent impossible case
+        }
+
+        int notTake = solve(ind - 1, amount, coins);
+        int take = 1e9;
+        if (coins[ind] <= amount)
+        {
+            take = 1 + solve(ind, amount - coins[ind], coins); // pick same coin again
+        }
+
+        return min(take, notTake);
+    }
+
+    int coinChange(vector<int> &coins, int amount)
+    {
+        int n = coins.size();
+        int ans = solve(n - 1, amount, coins);
+        return (ans >= 1e9) ? -1 : ans;
     }
 };

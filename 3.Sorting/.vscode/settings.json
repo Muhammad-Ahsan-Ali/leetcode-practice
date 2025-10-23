@@ -45,6 +45,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "map": "cpp",
-    "span": "cpp"
+    "span": "cpp",
+    "format": "cpp",
+    "text_encoding": "cpp"
   }
 }

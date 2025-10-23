@@ -13,3 +13,7 @@ long long ncr(int n, int r)
 
     return ans;
 }
+
+// n!/(n-r)!r!
+// n*n-1*n-2*(n-r)! / (n-r)!r!
+// n*n-1*n-2* /  r!

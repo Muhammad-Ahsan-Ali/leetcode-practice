@@ -18,8 +18,8 @@ struct DSU
         if (a == b)
             return;
 
-        if (p[a] > p[b])
-            swap(a, b); // a becomes the new root
+        if (p[a] > p[b]) // means b is bigger since cnt is stored negative form so >
+            swap(a, b);  // a becomes the new root
 
         p[a] += p[b]; // update size
         p[b] = a;     // merge b under a

@@ -1,4 +1,4 @@
- 
+
 bool isSubsequence(string s, string t)
 {
     int lenT = t.length();
@@ -20,7 +20,7 @@ bool isSubsequence(string s, string t)
             if (s[i] == t[j])
             {
                 j++;
-                flag = 1;  
+                flag = 1;
                 break;
             }
         }
@@ -30,7 +30,7 @@ bool isSubsequence(string s, string t)
         }
     }
 
-    // genrate all suuusequnces very hight complexity
+    // genrate all subsequnces very hight complexity
     //  for (int i = 0; i < (1 << len) - 1; i++)
     //  {
     //      string subsequence = "";
@@ -47,7 +47,5 @@ bool isSubsequence(string s, string t)
     //      }
     //  }
 
-
     return isSubsequence;
 }
- 
